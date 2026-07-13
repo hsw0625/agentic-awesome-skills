@@ -350,11 +350,11 @@ function buildHomeMeta({ catalogCount, imageUrl, canonicalUrl }) {
     name: SITE_NAME,
     description: `Installable GitHub library of ${formattedCount}+ agentic skills, specialized plugins, bundles, and workflows for AI coding assistants.`,
     url: REPOSITORY_URL,
-    sameAs: [
+    sameAs: [...new Set([
       canonicalUrl,
       HOSTED_CATALOG_URL,
       'https://www.npmjs.com/package/agentic-awesome-skills',
-    ],
+    ])],
     mainEntityOfPage: canonicalUrl,
     codeRepository: REPOSITORY_URL,
     applicationCategory: 'DeveloperApplication',
@@ -631,11 +631,11 @@ function buildTopicLandingMeta({ page, imageUrl, canonicalUrl }) {
     name: SITE_NAME,
     description: 'Installable GitHub library of agentic skills, specialized plugins, bundles, and workflows for AI coding assistants.',
     url: REPOSITORY_URL,
-    sameAs: [
+    sameAs: [...new Set([
       canonicalUrl,
       HOSTED_CATALOG_URL,
       'https://www.npmjs.com/package/agentic-awesome-skills',
-    ],
+    ])],
     mainEntityOfPage: canonicalUrl,
     codeRepository: REPOSITORY_URL,
     applicationCategory: 'DeveloperApplication',

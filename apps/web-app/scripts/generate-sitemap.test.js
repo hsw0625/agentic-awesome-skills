@@ -62,4 +62,18 @@ describe('sitemap generation script helpers', () => {
       ]),
     );
   });
+
+  it('keeps the default public sitemap skill count reproducible', () => {
+    const catalog = Array.from({ length: 43 }, (_, index) => ({
+      id: `skill-${String(index).padStart(2, '0')}`,
+      stars: 43 - index,
+    }));
+
+    const xml = buildSitemap(catalog, undefined, 'https://example.com');
+    const skillRoutes = xml.match(/https:\/\/example\.com\/skill\//g) || [];
+
+    expect(skillRoutes).toHaveLength(42);
+    expect(xml).toContain('https://example.com/skill/skill-41/</loc>');
+    expect(xml).not.toContain('https://example.com/skill/skill-42/</loc>');
+  });
 });
